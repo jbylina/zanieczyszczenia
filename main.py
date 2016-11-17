@@ -18,6 +18,11 @@ for index in range(0, pages):
     del tab_string[-18:]   #delete min, max, avg
 
 
+tbody = soup.find('tbody')
+th = tbody.find('th')
+first_date = th.string
+
+
 vector_float = np.array([])
 
 for element_string in tab_string:
@@ -38,18 +43,32 @@ for element in vector_float:
         row = row + 1
 
 
-Ox = np.arange(1, number_of_rows +1)
+dates = np.zeros((number_of_rows, 4))
+dates[0][0] = int(first_date[0:2])
+dates[0][1] = int(first_date[3:5])
+dates[0][2] = int(first_date[6:10])
+dates[0][3] = int(first_date[13:14])
 
-plt.plot(Ox, table[0:number_of_rows, 0], 'r-', label='PM10')
-plt.plot(Ox, table[0:number_of_rows, 1], 'g-', label='PM2.5')
-plt.plot(Ox, table[0:number_of_rows, 2], 'b-', label='O3')
-plt.plot(Ox, table[0:number_of_rows, 3], 'r--', label='NO2')
-plt.plot(Ox, table[0:number_of_rows, 4], 'g--', label='SO2')
-plt.plot(Ox, table[0:number_of_rows, 5], 'b--', label='C6H6')
 
-plt.xlabel('Godziny')
-plt.ylabel('Wartości')
-plt.grid()
-plt.legend()
+for dateY in range(number_of_rows):
+    for dateX in range(4):
 
-plt.show()
+
+
+#
+#Ox = np.arange(1, number_of_rows +1)
+
+#plt.plot(Ox, table[0:number_of_rows, 0], 'r-', label='PM10')
+#plt.plot(Ox, table[0:number_of_rows, 1], 'g-', label='PM2.5')
+# plt.plot(Ox, table[0:number_of_rows, 2], 'b-', label='O3')
+# plt.plot(Ox, table[0:number_of_rows, 3], 'r--', label='NO2')
+# plt.plot(Ox, table[0:number_of_rows, 4], 'g--', label='SO2')
+# plt.plot(Ox, table[0:number_of_rows, 5], 'b--', label='C6H6')
+#
+# plt.xlabel('Godziny')
+# plt.ylabel('Wartości')
+# plt.grid()
+# plt.legend()
+#
+# plt.show()
+#
