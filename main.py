@@ -47,6 +47,8 @@ for index in range(0, pages):
             if len(splited) > 0:
                 values.append(float(splited[0].replace(',', '.')))
         # index_kolumny=index_kolumny+1
+        # if values[0]==null
+
         conn.execute("""INSERT INTO zanieczyszczenia (PM10, PM25, O3, NO2, SO2, C6H6, data_odczytu)
                                                VALUES ({PM10}, {PM25}, {O3}, {NO2}, {SO2}, {C6H6}, {data_odczytu})""". \
             format(PM10=values[0], PM25=values[1], O3=values[2], NO2=values[3], SO2=values[4], C6H6=values[5], data_odczytu=date))
