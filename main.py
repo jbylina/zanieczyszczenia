@@ -32,7 +32,7 @@ def select_last_date():
         return dt.datetime.strptime(result[0], SQL_DATE_FORMAT)
 
 last_row_date = select_last_date()
-now = dt.datetime.now()
+now = dt.datetime.now() - dt.timedelta(hours=2)
 for index in range(0, pages):
     url = 'http://powietrze.gios.gov.pl/pjp/current/station_details/table/550/' + str(days) + '/' + str(index)
     request = requests.get(url)

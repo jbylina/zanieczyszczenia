@@ -1,9 +1,12 @@
+library(RSQLite)
+
+con = dbConnect(drv = RSQLite::SQLite(), dbname="zanieczyszczenia.db")
+dane = dbGetQuery( con,'SELECT * FROM zanieczyszczenia')
+
 shinyServer(function(input, output) {
-  dane = read.table(file = "bazaa.csv", header = TRUE, sep = ";")
-  
   attach(dane)
   
-  data_odczytu = as.numeric(data_odczytu)
+  data_odczytu = as.Date(data_odczytu, format='%Y-%m-%d %H:%M')
   output$wykres <- renderPlot({
     x = seq(input$Daty[1],input$Daty[2], by = 1)
     xdwa = x ^ 2
