@@ -22,7 +22,7 @@ shinyUI(
                        start = Sys.Date() - 3, end = Sys.Date() - 1,
                        min = Sys.Date() - 10, max = Sys.Date() + 10,
                        separator = " - ", format = "dd/mm/yy",
-                       startview = 'year', language = 'pl', weekstart = 1
+                       startview = 'year', language = 'pl', weekstart =  1
         )),
       
         # start = Sys.Date() - 10,

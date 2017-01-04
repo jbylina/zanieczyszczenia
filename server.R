@@ -24,7 +24,7 @@ shinyServer(function(input, output) {
     indeks2=max(which(CzyPrawda))
     x=seq(indeks1,indeks2,by=1)
     
-    plot(data_odczytuGodz[x],O3[x], xlab="data", ylab="stezenie[ug/m^3]")
+    plot(data_odczytuGodz[x],O3[x], xlab="data ", ylab="stezenie[ug/m^3]")
     
   })
 
