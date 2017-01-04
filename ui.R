@@ -17,20 +17,22 @@ shinyUI(
           selected = "O3"
         ),
         
-        sliderInput(
-          "Daty",label = "Podaj interesujacy Cie przedzial czasu",
-          min = 1,
-          max = 287,
-          value = c(69,72)
-        )
+        dateRangeInput('Data',
+                       label = paste('Wybierz interesujacy Cie okres czasu'),
+                       start = Sys.Date() - 3, end = Sys.Date() - 1,
+                       min = Sys.Date() - 10, max = Sys.Date() + 10,
+                       separator = " - ", format = "dd/mm/yy",
+                       startview = 'year', language = 'pl', weekstart = 1
+        )),
+      
         # start = Sys.Date() - 10,
         # end = Sys.Date() + 3,
         # min = Sys.Date() - 10,
         # max = Sys.Date() + 3 )
-      ),
-      
+    
       mainPanel(
         h3(textOutput("text1")),
+        h3(textOutput("text2")),
         plotOutput("wykres", click = "plotClick"),
         verbatimTextOutput("info")
       )
